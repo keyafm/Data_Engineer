@@ -1,21 +1,20 @@
 from flask import Flask
+app = Flask(__name__)
 
+if __name__ == "__main__":
+    app.run()
 
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_object("config")
-app.config.from_pyfile("config.py")
+    def hello():
+    return "<h1>Hello World!</h1>"
 
+@app.route("/")
+def hello():
+    return "<h1>Hello World!</h1>"
 
-@app.route('/')
-def index():
-    return "<h1>Hello World !</h1>"
-
-# app.add_url_rule("/","index",index)
-
-@app.route("/user/<name>")
-def user(name: str):
-    return "<h1>Hello , {}!</h1>".format(name)
-
-@app.route("/user1/<name>")
-def user1(name):
-    return "<h1>Bye, {}!</h1>".format(name)
+from flask import Flask
+app = Flask(__name__)
+@app.route("/")
+def hello():
+    return "Hello World!"
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=5000)
