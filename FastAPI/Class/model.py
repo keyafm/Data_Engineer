@@ -28,8 +28,13 @@ class IrisModel:
 
     # 4. Entrena el modelo usando el clasificador RandomForest
     def _train_model(self):
+<<<<<<< HEAD
         X = self.df.drop('species', axis=1)
         y = self.df['species']
+=======
+        X = self.df.drop('variety', axis=1)
+        y = self.df['variety']
+>>>>>>> upstream/main
         X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
         model = RandomForestClassifier(n_estimators=100)
         model.fit(X_train, y_train)
@@ -38,5 +43,11 @@ class IrisModel:
     # 5. Realiza una predicción utilizando el modelo entrenado
     def predict_species(self, sepal_length, sepal_width, petal_length, petal_width):
         data_in = [[sepal_length, sepal_width, petal_length, petal_width]]
+<<<<<<< HEAD
         prediction = self.model.predict(data_in)
         return prediction[0]
+=======
+        prediction_proba = self.model.predict_proba(data_in).tolist()
+        prediction = self.model.predict(data_in).tolist()
+        return prediction, prediction_proba
+>>>>>>> upstream/main
